@@ -5,6 +5,7 @@ import "./output.css";
 import Header from "./components/Header";
 import HeroSec from "./components/Home/HeroSec";
 import ModernLoader from "./components/Home/ModernLoader";
+import Categories from "./components/Home/Categories";
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -23,6 +24,7 @@ function App() {
         <>
           <Header />
           <HeroSec />
+          <Categories />
         </>
       )}
     </>
