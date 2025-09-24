@@ -4,6 +4,7 @@ import { useState } from "react";
 function ModernHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 bg-te right-0 z-50 bg-gradient-to-r from-indigo-600 via-teal-500  to-indigo-600 shadow-2xl">
@@ -36,7 +37,10 @@ function ModernHeader() {
           {/* Right Side Icons */}
           <div className="flex items-center space-x-4">
             {/* Search Icon - Mobile only */}
-            <button className="md:hidden p-2 text-white hover:bg-white/20 rounded-full transition-colors">
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="md:hidden p-2 text-white hover:bg-white/20 rounded-full transition-colors"
+            >
               <Search className="w-6 h-6" />
             </button>
 
@@ -159,6 +163,20 @@ function ModernHeader() {
           </div>
         </div>
       )}
+      {/* Mobile Search Overlay */}
+      <div
+        className={`bg-gray-300 transition-all duration-300 ease-in-out ${
+          isSearchOpen
+            ? "block md:hidden opacity-100 translate-y-0"
+            : "opacity-0 hidden translate-y-0"
+        }`}
+      >
+        <input
+          className=" py-2 px-4 outline-0 w-full focus:ring-1 focus:ring-yellow-400"
+          type="text"
+          placeholder="Search for products, brands and more..."
+        />
+      </div>
 
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

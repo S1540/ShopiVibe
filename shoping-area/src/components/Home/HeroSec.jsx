@@ -162,26 +162,8 @@ const HeroSec = () => {
               </button>
             </div>
           </div>
-
-          {/* Welcome Area */}
-          <div className="max-w-full flex justify-center">
-            <div className="max-w-full w-full flex justify-center gap-5 py-10">
-              <h1 className="text-4xl md:text-6xl text-center font-medium tracking-widest text-white">
-                WELCOME TO
-              </h1>
-              <h1 className="text-4xl md:text-6xl font-bold">
-                <span className="bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
-                  Shop
-                </span>
-                <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent animate-pulse delay-300">
-                  Vibe
-                </span>
-              </h1>
-            </div>
-          </div>
-
           {/* Swiper Area */}
-          <div className="relative w-full h-[450px] flex justify-center items-center mt-20 md:mt-0">
+          <div className="relative w-full h-[450px] flex justify-center items-center">
             <div className="max-w-full w-full h-full">
               <Swiper
                 spaceBetween={30}
@@ -245,7 +227,23 @@ const HeroSec = () => {
             </div>
           </div>
           {/* Service Shortcut */}
-          <div className="max-w-full w-full bg-gray-200 flex flex-col sm:flex-row justify-center items-center flex-wrap px-5 ">
+          {/* Mobile Horizontal Scroll */}
+          <div className="w-full bg-gray-200 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-5 lg:hidden">
+            <div className="flex gap-4 py-2 min-w-max">
+              {ServiceData.map((item, index) => (
+                <div className="snap-start" key={index}>
+                  <ServiceShortCard
+                    title={item.title}
+                    icon={item.icon}
+                    description={item.description}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Grid */}
+          <div className="hidden bg-gray-200 lg:grid lg:grid-cols-5 gap-4 px-5">
             {ServiceData.map((item, index) => (
               <ServiceShortCard
                 key={index}
