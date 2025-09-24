@@ -23,8 +23,10 @@ function App() {
       ) : (
         <>
           <Header />
-          <HeroSec />
-          <Categories />
+          <div className="bg-gray-200">
+            <HeroSec />
+            <Categories />
+          </div>
         </>
       )}
     </>

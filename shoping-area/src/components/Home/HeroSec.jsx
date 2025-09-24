@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { FaAnglesLeft } from "react-icons/fa6";
-import HeroBackground from "../../assets/World map-2.svg";
+// import HeroBackground from "../../assets/World map-2.svg";
 import Slider1 from "../../assets/Slider-img-1.jpg";
 import Slider2 from "../../assets/Slider-img-2.jpg";
 import Slider3 from "../../assets/Slider-img-3.jpg";
@@ -66,10 +66,7 @@ const HeroSec = () => {
 
   return (
     <>
-      <section
-        className="max-w-full relative top-15 bg-[url('../../assets/World Map.svg')] bg-cover bg-center py-1 md:pt-13 lg:pt-17 overflow-hidden"
-        style={{ backgroundImage: `url(${HeroBackground})` }}
-      >
+      <section className="max-w-full relative top-15 bg-gray-200  py-1 md:pt-13 lg:pt-17 overflow-hidden">
         <div className="relative">
           {/* Social Media Buttons - Center on sm, Left on md+ */}
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex flex-row items-center gap-4 z-20 md:top-1/2 md:left-8 md:-translate-y-1/2 md:translate-x-0 md:flex-col">
@@ -228,7 +225,7 @@ const HeroSec = () => {
           </div>
           {/* Service Shortcut */}
           {/* Mobile Horizontal Scroll */}
-          <div className="w-full bg-gray-200 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-5 lg:hidden">
+          <div className="w-full bg-gray-100 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-5 lg:hidden">
             <div className="flex gap-4 py-2 min-w-max">
               {ServiceData.map((item, index) => (
                 <div className="snap-start" key={index}>
@@ -243,7 +240,7 @@ const HeroSec = () => {
           </div>
 
           {/* Desktop Grid */}
-          <div className="hidden bg-gray-200 lg:grid lg:grid-cols-5 gap-4 px-5">
+          <div className="hidden bg-gray-100 lg:grid lg:grid-cols-5 gap-4 px-5">
             {ServiceData.map((item, index) => (
               <ServiceShortCard
                 key={index}

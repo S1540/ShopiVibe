@@ -68,7 +68,7 @@ const Categories = () => {
           </button>
         </div>
         {/* Categories items */}
-        {/* 📱 Mobile: 3 cards per row (no scroll) */}
+
         <div className="grid grid-cols-3 gap-4 mt-8 md:hidden">
           {categories.map((item, index) => (
             <CategorieCard key={index} name={item.name} image={item.image} />
