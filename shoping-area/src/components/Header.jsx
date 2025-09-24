@@ -6,7 +6,7 @@ function ModernHeader() {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <header className="fixed top-0 left-0 bg-te right-0 z-20 bg-gradient-to-r from-indigo-600 via-teal-500  to-indigo-600 shadow-2xl">
+    <header className="fixed top-0 left-0 bg-te right-0 z-50 bg-gradient-to-r from-indigo-600 via-teal-500  to-indigo-600 shadow-2xl">
       {/* Main Header */}
       <div className="max-w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">

@@ -12,6 +12,16 @@ import Slider2 from "../../assets/Slider-img-2.jpg";
 import Slider3 from "../../assets/Slider-img-3.jpg";
 import Slider4 from "../../assets/Slider-img-4.jpg";
 import Slider5 from "../../assets/Slider-img-5.jpg";
+import {
+  MdLocalShipping,
+  MdOutlineSupportAgent,
+  MdCardGiftcard,
+  MdOutlineOnlinePrediction,
+} from "react-icons/md";
+import { GiReturnArrow } from "react-icons/gi";
+import { RiSecurePaymentLine } from "react-icons/ri";
+import ServiceShortCard from "./ServiceShortCard";
+import { Icon } from "lucide-react";
 
 const HeroSec = () => {
   const progressCircle = useRef(null);
@@ -20,6 +30,40 @@ const HeroSec = () => {
     progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
+  // Service Data
+  const ServiceData = [
+    {
+      id: 1,
+      title: "FREE RETURN",
+      description: "14 Days Money Back Guarantee!",
+      icon: GiReturnArrow,
+    },
+    {
+      id: 2,
+      title: "FREE SHIPPING",
+      description: "Free shipping on all orders over $50",
+      icon: MdLocalShipping,
+    },
+    {
+      id: 3,
+      title: "SUPPORT 24/7",
+      description: "Contact us 24 hours a day, 7 days a week",
+      icon: MdOutlineSupportAgent,
+    },
+    {
+      id: 4,
+      title: "Receive Gift Card",
+      description: "You can receive a gift card",
+      icon: MdCardGiftcard,
+    },
+    {
+      id: 5,
+      title: "100% PAYMENT SECURE",
+      description: "We ensure secure payment",
+      icon: RiSecurePaymentLine,
+    },
+  ];
+
   return (
     <>
       <section
@@ -28,8 +72,8 @@ const HeroSec = () => {
       >
         <div className="relative">
           {/* Social Media Buttons - Center on sm, Left on md+ */}
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-row items-center gap-4 z-50 md:top-1/2 md:left-8 md:-translate-y-1/2 md:translate-x-0 md:flex-col">
-            <div className="social-button relative z-50">
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex flex-row items-center gap-4 z-20 md:top-1/2 md:left-8 md:-translate-y-1/2 md:translate-x-0 md:flex-col">
+            <div className="social-button relative z-20">
               <button className="relative w-12 h-12 rounded-full group">
                 <div className="floater w-full h-full absolute top-0 left-0 bg-red-500 rounded-full duration-300 group-hover:left-10 group-hover:shadow-2xl md:group-hover:left-10 "></div>
                 <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-red-500 rounded-full">
@@ -121,11 +165,11 @@ const HeroSec = () => {
 
           {/* Welcome Area */}
           <div className="max-w-full flex justify-center">
-            <div className="max-w-md w-full flex flex-col justify-center items-center gap-5 py-10 md:pb-20">
-              <h1 className="text-4xl sm:text-6xl text-center font-medium tracking-widest text-white">
+            <div className="max-w-full w-full flex justify-center gap-5 py-10">
+              <h1 className="text-4xl md:text-6xl text-center font-medium tracking-widest text-white">
                 WELCOME TO
               </h1>
-              <h1 className="text-4xl sm:text-6xl font-bold">
+              <h1 className="text-4xl md:text-6xl font-bold">
                 <span className="bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
                   Shop
                 </span>
@@ -196,10 +240,20 @@ const HeroSec = () => {
                 </div>
               </Swiper>
 
-              {/* 🔹 Gradient Overlays (Swiper ke sibling, absolute positioned) */}
               <div className="absolute z-10 top-0 left-0 h-full w-32 bg-gradient-to-r from-[#0C2344] to-transparent pointer-events-none"></div>
               <div className="absolute z-10 top-0 right-0 h-full w-32 bg-gradient-to-l from-[#0C2344] to-transparent pointer-events-none"></div>
             </div>
+          </div>
+          {/* Service Shortcut */}
+          <div className="max-w-full w-full bg-gray-200 flex flex-col sm:flex-row justify-center items-center flex-wrap px-5 ">
+            {ServiceData.map((item, index) => (
+              <ServiceShortCard
+                key={index}
+                title={item.title}
+                icon={item.icon}
+                description={item.description}
+              />
+            ))}
           </div>
         </div>
       </section>
