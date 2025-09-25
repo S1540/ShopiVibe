@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import HeroSec from "./components/Home/HeroSec";
 import ModernLoader from "./components/Home/ModernLoader";
 import Categories from "./components/Home/Categories";
+import CategoriSubBannerCard from "./components/Home/CategoriSubBannerCard";
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -26,6 +27,7 @@ function App() {
           <div className="bg-gray-200">
             <HeroSec />
             <Categories />
+            <CategoriSubBannerCard />
           </div>
         </>
       )}

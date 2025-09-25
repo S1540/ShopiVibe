@@ -8,7 +8,7 @@ const CategorieCard = ({ name, image }) => {
           <img
             src={image}
             alt="Image-1"
-            className="rounded-full object-cover w-20 h-20 sm:w-40 sm:h-40 cursor-pointer"
+            className="rounded-full border border-gray-400 object-cover w-20 h-20 sm:w-40 sm:h-40 cursor-pointer"
           />
           <h1>{name}</h1>
         </div>

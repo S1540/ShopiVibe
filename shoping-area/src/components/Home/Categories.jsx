@@ -10,6 +10,10 @@ import bedsheet from "../../assets/categories/category-bedsheet.jpg";
 import kitchen from "../../assets/categories/category-kitchen.jpg";
 import facewash from "../../assets/categories/category-facewash.jpg";
 import CategorieCard from "./CategorieCard";
+import item1 from "../../assets/categories/Sub-banner-1.jpg";
+import item2 from "../../assets/categories/Sub-banner-2.jpg";
+import item3 from "../../assets/categories/Sub-banner-3.jpg";
+import CategoriSubBannerCard from "./CategoriSubBannerCard";
 
 const Categories = () => {
   const categories = [
@@ -25,11 +29,35 @@ const Categories = () => {
     { id: 10, name: "Facewash", image: facewash },
   ];
 
+  const subOfferbanner = [
+    {
+      id: 1,
+      title: "Latest Wireless Headphones",
+      price: "99.50",
+      subBanner: item1,
+    },
+    {
+      id: 2,
+      title: "Latest Smart Watch",
+      price: "54.00",
+      subBanner: item2,
+    },
+    {
+      id: 3,
+      title: "Motorola New SmartPhone",
+      price: "97.50",
+      subBanner: item3,
+    },
+  ];
+
   return (
     <>
       <section className="max-w-7xl mx-auto pt-24 px-4">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl sm:text-4xl font-semibold">Categories</h1>
+        <div className="flex items-center justify-between border-b border-gray-400 pb-3">
+          <div className="relative">
+            <h1 className="text-2xl sm:text-4xl font-semibold">Categories</h1>
+            <span className=" absolute top-12 sm:top-13 h-0.5 max-w-44 w-full  bg-gradient-to-r from-indigo-600 via-teal-500  to-indigo-600 inline-block"></span>
+          </div>
 
           <button class="relative inline-flex items-center justify-center px-8 py-2.5 overflow-hidden tracking-tighter text-white bg-indigo-600 rounded-md group">
             <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-orange-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
@@ -84,6 +112,19 @@ const Categories = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Sub Offer Banner */}
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-10 place-items-center">
+          {subOfferbanner.map((item, index) => (
+            <CategoriSubBannerCard
+              key={index}
+              SubBanner={item.subBanner}
+              title={item.title}
+              price={item.price}
+            />
+          ))}
         </div>
       </section>
     </>
