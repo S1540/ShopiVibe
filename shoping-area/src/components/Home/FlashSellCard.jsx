@@ -1,19 +1,16 @@
 import React from "react";
 
-const FlashSellCard = () => {
+const FlashSellCard = ({ title, price, image, rating, brand }) => {
   return (
     <>
       <div>
         <div className="card">
           <div className="image-container">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk3uQNowC1p9BOEY65gSybVJxzDmj0bkKn2Q&s"
-              alt=""
-            />
-            <div className="price">$49.9</div>
+            <img src={image} alt="feild to load" />
+            <div className="price">${price}</div>
           </div>
           <label className="favorite">
-            <input defaultChecked type="checkbox" />
+            <input defaultUnChecked type="checkbox" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -23,8 +20,8 @@ const FlashSellCard = () => {
             </svg>
           </label>
           <div className="content">
-            <div className="brand">ADIDAS</div>
-            <div className="product-name">Classic oversized hoodie</div>
+            <div className="brand">{brand}</div>
+            <div className="product-name">{title}</div>
             <div className="color-size-container">
               <div className="colors">
                 Color
@@ -130,7 +127,7 @@ const FlashSellCard = () => {
                   id="star-svgrepo-com-5"
                 />
               </svg>
-              (29,062)
+              ({rating})
             </div>
           </div>
           <div className="button-container">

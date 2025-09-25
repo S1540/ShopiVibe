@@ -145,7 +145,7 @@ const Categories = () => {
           ref={scrollRef}
           className="hidden md:block overflow-x-auto scrollbar-hide no-scrollbar mt-8"
         >
-          <div className="flex gap-4 min-w-max px-2">
+          <div className="flex gap-6 min-w-max px-2">
             {categories.map((item, index) => (
               <div key={index} className="flex-shrink-0">
                 <CategorieCard name={item.name} image={item.image} />
@@ -155,7 +155,7 @@ const Categories = () => {
         </div>
 
         {/* Sub Offer Banner */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-10 place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-14 place-items-center">
           {subOfferbanner.map((item, index) => (
             <CategoriSubBannerCard
               key={index}
