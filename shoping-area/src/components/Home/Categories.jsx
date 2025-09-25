@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef } from "react";
 import mens from "../../assets/categories/category-mens.jpg";
 import womens from "../../assets/categories/category-womens.jpg";
 import kids from "../../assets/categories/category-kids.jpg";
@@ -14,6 +15,7 @@ import item1 from "../../assets/categories/Sub-banner-1.jpg";
 import item2 from "../../assets/categories/Sub-banner-2.jpg";
 import item3 from "../../assets/categories/Sub-banner-3.jpg";
 import CategoriSubBannerCard from "./CategoriSubBannerCard";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Categories = () => {
   const categories = [
@@ -50,53 +52,88 @@ const Categories = () => {
     },
   ];
 
+  const scrollRef = useRef(null);
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: -300,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: 300,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <>
-      <section className="max-w-7xl mx-auto pt-24 px-4">
+      <section className="max-w-7xl mx-auto pt-24 md:pt-34 px-4">
         <div className="flex items-center justify-between border-b border-gray-400 pb-3">
           <div className="relative">
             <h1 className="text-2xl sm:text-4xl font-semibold">Categories</h1>
             <span className=" absolute top-12 sm:top-13 h-0.5 max-w-44 w-full  bg-gradient-to-r from-indigo-600 via-teal-500  to-indigo-600 inline-block"></span>
           </div>
 
-          <button class="relative inline-flex items-center justify-center px-8 py-2.5 overflow-hidden tracking-tighter text-white bg-indigo-600 rounded-md group">
-            <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-orange-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
-            <span class="absolute bottom-0 left-0 h-full -ml-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-auto h-full opacity-100 object-stretch"
-                viewBox="0 0 487 487"
-              >
-                <path
-                  fill-opacity=".1"
-                  fill-rule="nonzero"
-                  fill="#FFF"
-                  d="M0 .3c67 2.1 134.1 4.3 186.3 37 52.2 32.7 89.6 95.8 112.8 150.6 23.2 54.8 32.3 101.4 61.2 149.9 28.9 48.4 77.7 98.8 126.4 149.2H0V.3z"
-                ></path>
-              </svg>
-            </span>
-            <span class="absolute top-0 right-0 w-12 h-full -mr-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="object-cover w-full h-full"
-                viewBox="0 0 487 487"
-              >
-                <path
-                  fill-opacity=".1"
-                  fill-rule="nonzero"
-                  fill="#FFF"
-                  d="M487 486.7c-66.1-3.6-132.3-7.3-186.3-37s-95.9-85.3-126.2-137.2c-30.4-51.8-49.3-99.9-76.5-151.4C70.9 109.6 35.6 54.8.3 0H487v486.7z"
-                ></path>
-              </svg>
-            </span>
-            <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-200"></span>
-            <a href="#" class="relative text-base font-semibold">
-              View All
-            </a>
-          </button>
-        </div>
-        {/* Categories items */}
+          <div className="flex gap-5 items-center">
+            <button className="relative inline-flex items-center justify-center px-8 py-2.5 overflow-hidden tracking-tighter text-white bg-indigo-600 rounded-md group">
+              <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-orange-500 rounded-full group-hover:w-56 group-hover:h-56" />
+              <span className="absolute bottom-0 left-0 h-full -ml-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-auto h-full opacity-100 object-stretch"
+                  viewBox="0 0 487 487"
+                >
+                  <path
+                    fillOpacity=".1"
+                    fillRule="nonzero"
+                    fill="#FFF"
+                    d="M0 .3c67 2.1 134.1 4.3 186.3 37 52.2 32.7 89.6 95.8 112.8 150.6 23.2 54.8 32.3 101.4 61.2 149.9 28.9 48.4 77.7 98.8 126.4 149.2H0V.3z"
+                  />
+                </svg>
+              </span>
+              <span className="absolute top-0 right-0 w-12 h-full -mr-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="object-cover w-full h-full"
+                  viewBox="0 0 487 487"
+                >
+                  <path
+                    fillOpacity=".1"
+                    fillRule="nonzero"
+                    fill="#FFF"
+                    d="M487 486.7c-66.1-3.6-132.3-7.3-186.3-37s-95.9-85.3-126.2-137.2c-30.4-51.8-49.3-99.9-76.5-151.4C70.9 109.6 35.6 54.8.3 0H487v486.7z"
+                  />
+                </svg>
+              </span>
+              <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-200" />
+              <a href="#" className="relative text-base font-semibold">
+                View All
+              </a>
+            </button>
 
+            {/* prev + Next */}
+            <div className="md:flex gap-2 hidden">
+              <FaChevronLeft
+                onClick={scrollLeft}
+                color="white"
+                className="max-w-9 w-full h-9 bg-indigo-400 rounded-full p-2 hover:bg-orange-500 hover:text-black transition-all duration-300 cursor-pointer"
+              />
+              <FaChevronRight
+                onClick={scrollRight}
+                color="white"
+                className="max-w-9 w-full h-9 bg-indigo-600 rounded-full p-2 hover:bg-orange-500 hover:text-black transition-all duration-300 cursor-pointer"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* 📱 Mobile grid */}
         <div className="grid grid-cols-3 gap-4 mt-8 md:hidden">
           {categories.map((item, index) => (
             <CategorieCard key={index} name={item.name} image={item.image} />
@@ -104,7 +141,10 @@ const Categories = () => {
         </div>
 
         {/* 💻 Tablet/Desktop: Horizontal scroll */}
-        <div className="hidden md:block overflow-x-auto scrollbar-hide no-scrollbar mt-8">
+        <div
+          ref={scrollRef}
+          className="hidden md:block overflow-x-auto scrollbar-hide no-scrollbar mt-8"
+        >
           <div className="flex gap-4 min-w-max px-2">
             {categories.map((item, index) => (
               <div key={index} className="flex-shrink-0">
@@ -115,7 +155,6 @@ const Categories = () => {
         </div>
 
         {/* Sub Offer Banner */}
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-10 place-items-center">
           {subOfferbanner.map((item, index) => (
             <CategoriSubBannerCard

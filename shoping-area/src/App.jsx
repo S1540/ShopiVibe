@@ -7,6 +7,7 @@ import HeroSec from "./components/Home/HeroSec";
 import ModernLoader from "./components/Home/ModernLoader";
 import Categories from "./components/Home/Categories";
 import CategoriSubBannerCard from "./components/Home/CategoriSubBannerCard";
+import FlashSellCard from "./components/Home/FlashSellCard";
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -28,6 +29,7 @@ function App() {
             <HeroSec />
             <Categories />
             <CategoriSubBannerCard />
+            <FlashSellCard />
           </div>
         </>
       )}
