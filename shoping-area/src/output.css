@@ -664,6 +664,9 @@
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1598,11 +1601,6 @@
       width: calc(var(--spacing) * 96);
     }
   }
-  .sm\:grid-cols-2 {
-    @media (width >= 40rem) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
   .sm\:px-6 {
     @media (width >= 40rem) {
       padding-inline: calc(var(--spacing) * 6);
@@ -1838,7 +1836,8 @@
 .card {
   --accent-color: #4d4fe2;
   position: relative;
-  width: 270px;
+  max-width: 240px;
+  width: 100%;
   background: white;
   border-radius: 0.3rem;
   padding: 0.3rem;
@@ -1848,10 +1847,16 @@
 .card .image-container {
   position: relative;
   width: 100%;
-  height: 170px;
+  height: 100px;
   border-radius: 0.7rem;
   border-top-right-radius: 4rem;
   margin-bottom: 1rem;
+  overflow: hidden;
+}
+@media (min-width: 641px) {
+  .card .image-container {
+    height: 150px;
+  }
 }
 .card .image-container img {
   width: 100%;
@@ -1867,13 +1872,13 @@
 }
 .card .image-container .price {
   position: absolute;
-  right: 0.7rem;
-  bottom: -1rem;
+  right: 0.4rem;
+  bottom: 0.1rem;
   background: white;
   color: var(--accent-color);
   font-weight: 900;
   font-size: 0.9rem;
-  padding: 0.5rem;
+  padding: 0.4rem;
   border-radius: 1rem 1rem 2rem 2rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 15px 0px;
 }
@@ -1911,17 +1916,18 @@
   font-weight: 700;
   color: #666666;
   font-size: 0.7rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 .card .content .color-size-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   text-transform: uppercase;
   font-size: 0.7rem;
   font-weight: 700;
   color: #a8a8a8;
   gap: 2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .card .content .color-size-container > * {
   flex: 1;
