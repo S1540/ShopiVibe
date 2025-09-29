@@ -5,6 +5,7 @@ const FlashSell = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [timeleft, setTimeLeft] = useState(4500);
   const sectionRef = useRef(null);
   const itemsPerPage = 10;
 
@@ -12,7 +13,7 @@ const FlashSell = () => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data.products.slice(0, 20)); // sirf 16 products
+        setProducts(data.products.slice(0, 20));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -36,13 +37,31 @@ const FlashSell = () => {
     setCurrentPage(pageNumber);
     sectionRef.current.scrollIntoView({ behavior: "smooth" });
   };
+  // Timer countdown
+  useEffect(() => {
+    if (timeleft <= 0) return;
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [timeleft]);
+  const hours = Math.floor(timeleft / 3600);
+  const minutes = Math.floor((timeleft % 3600) / 60);
+  const seconds = timeleft % 60;
 
   return (
     <div ref={sectionRef} className="max-w-7xl mx-auto py-14 md:pt-24 px-4">
       <div className="relative border-b border-gray-400">
-        <h1 className="text-2xl sm:text-4xl font-semibold py-2 sm:py-1.5">
-          Flash Sell
-        </h1>
+        <div className="flex">
+          <h1 className="text-2xl sm:text-4xl font-semibold py-2 sm:py-1.5">
+            Flash Sell
+          </h1>
+          <p className="bg-red-600 text-white h-6 px-3 rounded-xs ml-3 font-medium ">
+            {`${hours.toString().padStart(2, "0")}:${minutes
+              .toString()
+              .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`}
+          </p>
+        </div>
         <span className=" absolute top-12 sm:top-13 h-0.5 max-w-38 w-full  bg-gradient-to-r from-indigo-600 via-teal-500  to-indigo-600 inline-block"></span>
       </div>
       {/* Cards Grid */}

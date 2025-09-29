@@ -9,6 +9,7 @@ import Categories from "./components/Home/Categories";
 import CategoriSubBannerCard from "./components/Home/CategoriSubBannerCard";
 
 import FlashSell from "./components/Home/FlashSell";
+import Collection from "./components/Home/Collection";
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -31,6 +32,7 @@ function App() {
             <Categories />
             <CategoriSubBannerCard />
             <FlashSell />
+            <Collection />
           </div>
         </>
       )}
